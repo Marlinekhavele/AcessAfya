@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "graphene_django",
 
 ]
+AUTH_USER_MODEL = 'base.User'
+
 
 GRAPHENE = {
     "SCHEMA": "app.schema.schema"
