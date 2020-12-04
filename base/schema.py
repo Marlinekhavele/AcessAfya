@@ -1,6 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
-from .models import (Issue,Location,Prescription,Patient,Staff,Visit)
+from .models import (Issue,Location,Patient,Staff,Visit)
 
 class IssueType(DjangoObjectType):
     class Meta:
