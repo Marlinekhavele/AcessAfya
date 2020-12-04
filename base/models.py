@@ -32,8 +32,6 @@ class Prescription(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
-
-
     def ___str___(self):
         return self.name
 
@@ -52,26 +50,13 @@ class Patient(models.Model):
     def ___str___(self):
         return self.name
 
-class Receipt(models.Model):
-    """ receipt Model"""
-    location = models.ForeignKey(Location,on_delete=models.CASCADE,related_name="location")
-    customer = models.ForeignKey(Customer,on_delete=models.CASCADE,related_name="customer")
-    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
-        return self.name
-
-
-
 class Staff(models.Model):
     """ Staff Model"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
     def ___str___(self):
-        return self.name
+        return self.user
 
 class Visit(models.Model):
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="patient")
