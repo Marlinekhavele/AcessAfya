@@ -93,7 +93,7 @@ class Visit(models.Model):
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="patient")
     location = models.ForeignKey(Location,on_delete=models.CASCADE,related_name="location")
     staff = models.ForeignKey(Staff,on_delete=models.CASCADE,related_name="staff")
-    issues = models.ManyToManyField()
+    issues = models.ManyToManyField('Issue')
     nps = models.IntegerField()
     cost = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal("0.00"))
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
