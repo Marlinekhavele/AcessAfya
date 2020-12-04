@@ -3,9 +3,6 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from decimal import Decimal
 
-
-
-
 # Create your models here.
 class Issue(models.Model):
     """issue model"""
@@ -48,7 +45,7 @@ class Patient(models.Model):
     updated_at = models.DateTimeField(auto_now=True, editable=False)
 
     def ___str___(self):
-        return self.name
+        return self.first_name
 
 class Staff(models.Model):
     """ Staff Model"""
