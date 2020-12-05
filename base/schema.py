@@ -10,6 +10,9 @@ class IssueType(DjangoObjectType):
 class Query(graphene.ObjectType):
     all_issue = graphene.List(IssueType)
 
+    def resolve_all_issue(root,info):
+        return Issue.objects.all()
+
 schema = graphene.Schema(query=Query)
 
 
