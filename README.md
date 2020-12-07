@@ -10,7 +10,7 @@
 virtualenv env -p python3.6
 ```
 ###### Activate it
-source env/bin/activate
+###### source env/bin/activate
 -------------
 
 ###### Install deps
