@@ -87,8 +87,8 @@ class Staff(AbstractBaseUser, PermissionsMixin):
 
 
 class Visit(models.Model):
-    receipt = models.ForeignKey(Receipt,on_delete=models.CASCADE,related_name="receipt")
-    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
+    receipt = models.ForeignKey(Receipt,on_delete=models.CASCADE,related_name="receipt",default='0')
+    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription",default='0')
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="patient")
     location = models.ForeignKey(Location,on_delete=models.CASCADE,related_name="location")
     staff = models.ForeignKey(Staff,on_delete=models.CASCADE,related_name="staff")
