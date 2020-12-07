@@ -29,6 +29,11 @@ class PatientType(DjangoObjectType):
         model = Patient
         fields = ("id","first_name","last_name","age","phone_number","id_number","next_kin","satisfaction","created_at","updated_at")
 
+class StaffType(DjangoObjectType):
+    class Meta:
+        model = Staff
+        fields = ("id", "patient", "location","staff","issues","nps","cost","created_at","updated_at")
+
 class VisitType(DjangoObjectType):
     class Meta:
         model = Visit

@@ -14,8 +14,7 @@ class Receipt(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 class Prescription(models.Model):
@@ -23,8 +22,7 @@ class Prescription(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 
@@ -35,7 +33,7 @@ class Issue(models.Model):
     prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 
@@ -45,8 +43,7 @@ class Location(models.Model):
     description= models.TextField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 class Patient(models.Model):
@@ -60,8 +57,7 @@ class Patient(models.Model):
     satisfaction = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.first_name
 
 
@@ -101,7 +97,7 @@ class Visit(models.Model):
     cost = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal("0.00"))
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-    def ___str___(self):
+    def __str__(self):
         return "{} visit at {}".format(self.patient.name, self.location.name)
 
 
