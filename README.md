@@ -5,7 +5,7 @@
 ![alt text](Marline.png "Dashboard image")
 
 #### ERD DIAGRAM
-![alt text](visits.png "erd image")
+![alt text](Visits.png "erd image")
 
 
 
