@@ -14,8 +14,7 @@ class Receipt(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 class Prescription(models.Model):
@@ -23,19 +22,16 @@ class Prescription(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 
 class Issue(models.Model):
     """issue model"""
     name = models.CharField(max_length=100)
-    receipt = models.ForeignKey(Receipt,on_delete=models.CASCADE,related_name="receipt")
-    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 
@@ -45,8 +41,7 @@ class Location(models.Model):
     description= models.TextField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.name
 
 class Patient(models.Model):
@@ -60,8 +55,7 @@ class Patient(models.Model):
     satisfaction = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-
-    def ___str___(self):
+    def __str__(self):
         return self.first_name
 
 
@@ -77,8 +71,8 @@ class Staff(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _('Staff')
+        verbose_name_plural = _('Staff users')
     def get_full_name(self):
         '''
         Returns the first_name plus the last_name, with a space in between.
@@ -87,12 +81,14 @@ class Staff(AbstractBaseUser, PermissionsMixin):
         return full_name.strip()
     def get_short_name(self):
         '''
-        Returns the short name for the user.
+        Returns the short name for the staff.
         '''
         return self.first_name
 
 
 class Visit(models.Model):
+    receipt = models.ForeignKey(Receipt,on_delete=models.CASCADE,related_name="receipt")
+    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="patient")
     location = models.ForeignKey(Location,on_delete=models.CASCADE,related_name="location")
     staff = models.ForeignKey(Staff,on_delete=models.CASCADE,related_name="staff")
@@ -101,7 +97,7 @@ class Visit(models.Model):
     cost = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal("0.00"))
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
-    def ___str___(self):
+    def __str__(self):
         return "{} visit at {}".format(self.patient.name, self.location.name)
 
 
