@@ -5,6 +5,8 @@ from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from .managers import UserManager
 from decimal import Decimal
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 # Create your models here.
 class Receipt(models.Model):
@@ -52,8 +54,8 @@ class Patient(models.Model):
     first_name = models.CharField(max_length=100) 
     last_name = models.CharField(max_length=100)
     age = models.CharField(max_length=100)  
-    phone_number = models.IntegerField() 
-    id_number = models.IntegerField() 
+    phone_number =  models.CharField(max_length=100)
+    id_number = models.PositiveIntegerField(null=True)
     next_kin = models.TextField()       
     satisfaction = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
