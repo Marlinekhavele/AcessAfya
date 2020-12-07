@@ -17,7 +17,7 @@ class PrescriptionType(DjangoObjectType):
 class IssueType(DjangoObjectType):
     class Meta:
         model = Issue
-        fields = ("id", "name", "receipt","prescription","created_at","updated_at")
+        fields = ("id", "name", "created_at","updated_at")
 
 class LocationType(DjangoObjectType):
     class Meta:
@@ -32,12 +32,14 @@ class PatientType(DjangoObjectType):
 class StaffType(DjangoObjectType):
     class Meta:
         model = Staff
-        fields = ("id", "patient", "location","staff","issues","nps","cost","created_at","updated_at")
+        fields = ("id", "email", "first_name","last_name","date_joined","is_active","is_staff","avatar")
+
+
 
 class VisitType(DjangoObjectType):
     class Meta:
         model = Visit
-        fields = ("id", "patient", "location","staff","issues","nps","cost","created_at","updated_at")
+        fields = ("id", "receipt","prescription","patient", "location","staff","issues","nps","cost","created_at","updated_at")
 
 
 class Query(graphene.ObjectType):
@@ -46,10 +48,8 @@ class Query(graphene.ObjectType):
     issue = graphene.List(IssueType)
     location = graphene.List(LocationType)
     patient = graphene.List(PatientType)
+    staff = graphene.List(StaffType)
     visit = graphene.List(VisitType)
-
-
-
 
     def resolve_receipt(root,info):
         return Receipt.objects.all()
@@ -66,6 +66,9 @@ class Query(graphene.ObjectType):
 
     def resolve_patient(self, info, **kwargs):
         return Patient.objects.all()
+
+    def resolve_staff(self, info, **kwargs):
+        return Staff.objects.all()
 
     def resolve_visit(self, info, **kwargs):
         return Visit.objects.all()

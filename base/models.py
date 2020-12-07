@@ -29,8 +29,6 @@ class Prescription(models.Model):
 class Issue(models.Model):
     """issue model"""
     name = models.CharField(max_length=100)
-    receipt = models.ForeignKey(Receipt,on_delete=models.CASCADE,related_name="receipt")
-    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
     def __str__(self):
@@ -89,6 +87,8 @@ class Staff(AbstractBaseUser, PermissionsMixin):
 
 
 class Visit(models.Model):
+    receipt = models.ForeignKey(Receipt,on_delete=models.CASCADE,related_name="receipt")
+    prescription = models.ForeignKey(Prescription,on_delete=models.CASCADE,related_name="prescription")
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="patient")
     location = models.ForeignKey(Location,on_delete=models.CASCADE,related_name="location")
     staff = models.ForeignKey(Staff,on_delete=models.CASCADE,related_name="staff")
