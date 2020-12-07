@@ -19,10 +19,24 @@ class IssueType(DjangoObjectType):
         model = Issue
         fields = ("id", "name", "receipt","prescription","created_at","updated_at")
 
+class LocationType(DjangoObjectType):
+    class Meta:
+        model = Location
+        fields = ("id","name","description","created_at","updated_at")
+
+class PatientType(DjangoObjectType):
+    class Meta:
+        model = Patient
+        fields = ("id","first_name","last_name","age","phone_number","id_number","next_kin","satisfaction","created_at","updated_at")
+      
+
 class Query(graphene.ObjectType):
     receipt = graphene.List(ReceiptType)
     prescription = graphene.List(PrescriptionType)
     issue = graphene.List(IssueType)
+    location = graphene.List(LocationType)
+    patient = graphene.List(PatientType)
+
 
 
     def resolve_receipt(root,info):
@@ -34,6 +48,12 @@ class Query(graphene.ObjectType):
 
     def resolve_issue(root,info):
         return Issue.objects.all()
+
+    def resolve_location(self, info, **kwargs):
+        return Location.objects.all()
+
+    def resolve_patient(self, info, **kwargs):
+        return Patient.objects.all()
 
 schema = graphene.Schema(query=Query)
 
