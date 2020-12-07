@@ -6,13 +6,12 @@
 ----------------------------
 ###### Run the following commands to get started using virtualenv
 ```shell
-#### once - create virtual environment
+# once - create virtual environment
 virtualenv env -p python3.6
 ```
 ###### Activate it
 ###### source env/bin/activate
 -------------
-
 ###### Install deps
 ```shell
 pip install -r requirements.txt
