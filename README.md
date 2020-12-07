@@ -12,10 +12,10 @@ Follow the following steps to setup your  dev environment
 virtualenv env -p python3.6
 ```
 
-#### activate it
+#### Activate it
 source env/bin/activate
 
-#### install deps
+#### Install deps
 ```shell
 pip install -r requirements.txt
 python manage.py createsuperuser
