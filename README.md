@@ -3,26 +3,24 @@
 
 Follow the following steps to setup your  dev environment
 
-Get started with virtual env
+#### Get started with virtual env
 ----------------------------
 
-Run the following commands to get started using virtualenv
-
-``` shell
+###### Run the following commands to get started using virtualenv
+```shell
 # once - create virtual environment
 virtualenv env -p python3.6
 ```
 
-#### activate it
+#### Activate it
 source env/bin/activate
 
-#### install deps
-```
+#### Install deps
+```shell
 pip install -r requirements.txt
 python manage.py createsuperuser
 python manage.py migrate
 python manage.py runserver
-
 ```
 
 #### The dashboard I am re-creating it's backend
