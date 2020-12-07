@@ -77,8 +77,8 @@ class Staff(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _('Staff')
+        verbose_name_plural = _('Staff users')
     def get_full_name(self):
         '''
         Returns the first_name plus the last_name, with a space in between.
@@ -87,7 +87,7 @@ class Staff(AbstractBaseUser, PermissionsMixin):
         return full_name.strip()
     def get_short_name(self):
         '''
-        Returns the short name for the user.
+        Returns the short name for the staff.
         '''
         return self.first_name
 
