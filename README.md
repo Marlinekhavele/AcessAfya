@@ -1,6 +1,30 @@
 ### Access Afya Interview Solution
 ##### Writing Access Afya Interview Solution App using Python, Django and GraphQL
 
+Follow the following steps to setup your  dev environment
+
+Get started with virtual env
+----------------------------
+
+Run the following commands to get started using virtualenv
+
+``` shell
+# once - create virtual environment
+virtualenv env -p python3.6
+```
+
+#### activate it
+source env/bin/activate
+
+#### install deps
+```
+pip install -r requirements.txt
+python manage.py createsuperuser
+python manage.py migrate
+python manage.py runserver
+
+```
+
 #### The dashboard I am re-creating it's backend
 ![alt text](Marline.png "Dashboard image")
 
