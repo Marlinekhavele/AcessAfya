@@ -43,9 +43,9 @@ INSTALLED_APPS = [
 
 
 ]
-# GRAPHENE = {
-#     "SCHEMA": "app.schema.schema"
-# }
+
+AUTH_USER_MODEL='app.Staff'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

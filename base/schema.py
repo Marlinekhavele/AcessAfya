@@ -28,7 +28,12 @@ class PatientType(DjangoObjectType):
     class Meta:
         model = Patient
         fields = ("id","first_name","last_name","age","phone_number","id_number","next_kin","satisfaction","created_at","updated_at")
-      
+
+class VisitType(DjangoObjectType):
+    class Meta:
+        model = Visit
+        fields = ("id", "patient", "location","staff","issues","nps","cost","created_at","updated_at")
+
 
 class Query(graphene.ObjectType):
     receipt = graphene.List(ReceiptType)
@@ -36,6 +41,8 @@ class Query(graphene.ObjectType):
     issue = graphene.List(IssueType)
     location = graphene.List(LocationType)
     patient = graphene.List(PatientType)
+    visit = graphene.List(VisitType)
+
 
 
 
@@ -54,6 +61,9 @@ class Query(graphene.ObjectType):
 
     def resolve_patient(self, info, **kwargs):
         return Patient.objects.all()
+
+    def resolve_visit(self, info, **kwargs):
+        return Visit.objects.all()
 
 schema = graphene.Schema(query=Query)
 

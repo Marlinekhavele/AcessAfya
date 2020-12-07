@@ -1,0 +1,14 @@
+aniso8601==7.0.0
+asgiref==3.2.5
+certifi==2019.11.28
+chardet==3.0.4
+Django==3.0.4
+django-phonenumber-field==5.0.0
+graphene==2.1.8
+graphene-django==2.13.0
+phonenumbers==8.12.14
+psycopg2==2.8.4
+
+
+
+
