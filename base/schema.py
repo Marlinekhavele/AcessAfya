@@ -51,14 +51,14 @@ class Query(graphene.ObjectType):
     staff = graphene.List(StaffType)
     visit = graphene.List(VisitType)
 
-    def resolve_receipt(root,info):
+    def resolve_receipt(self, info, **kwargs):
         return Receipt.objects.all()
     
-    def resolve_prescription(root,info):
+    def resolve_prescription(self, info, **kwargs):
         return Prescription.objects.all()
 
 
-    def resolve_issue(root,info):
+    def resolve_issue(self, info, **kwargs):
         return Issue.objects.all()
 
     def resolve_location(self, info, **kwargs):
