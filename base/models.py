@@ -55,6 +55,15 @@ class Patient(models.Model):
     satisfaction = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
+    def normalize_phone(phone):
+        phone = ''.join(phone.split(' '))
+        if phone.startswith('0') and len(phone) == 10:
+            return phone, True, None
+        elif phone.startswith('+254') and len(phone) == 13:
+                return phone.replace('+254','0'), True, None
+        elif phone.startswith('254') and len(phone) == 12:
+                return "0"+phone[3:], True, None
+                return phone, False,  "Invalid phone number submitted"
     def __str__(self):
         return self.first_name
 
