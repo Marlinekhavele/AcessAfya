@@ -25,7 +25,7 @@ SECRET_KEY = '=oaf8^c0w&vhxy_4j_3-1tu!&#04vx+l2%!mn!)0y&jlplt_l!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["marline.pythonanywhere.com","127.0.0.1"]
 
 
 # Application definition
